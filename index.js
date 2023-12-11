@@ -7,14 +7,14 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-app.get("/", (req, res) => { 
+app.get("/", (req, res) => {
     res.render("index.ejs");
 })
 
-app.post("/search", (req, res) => { 
+app.post("/search", (req, res) => {
     let videoSrch = req.body;
     console.log(videoSrch);
-    res.render("index.ejs");
+    res.render("index.ejs", {video: videoSrch});
 })
 
 app.listen(port, () => {

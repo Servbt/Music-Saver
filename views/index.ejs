@@ -15,5 +15,6 @@
         <input class="btn btn-primary btn-lg my-3 create-button " type="submit" value="search video">
       </form>
 </body>
-
+<% if(locals.video) { %>
 <%- include("components/searchInit.ejs") %>
+<% } %>
