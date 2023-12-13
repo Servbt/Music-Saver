@@ -26,5 +26,8 @@
   gapi.load("client:auth2", function () {
     gapi.auth2.init({ client_id: "YOUR_CLIENT_ID" });
   });
+  setTimeout(function() { 
+        execute()
+    }, 500);
 </script>
-<button onclick="loadClient().then(execute)" class="client-load"> authorize and load </button>
+<button onclick="execute()" class="client-load"> Execute btn </button>
