@@ -5,11 +5,16 @@ const app = express();
 const port = 3000;
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
-
 const apiKey = 'AIzaSyDxZy9vQXRU43KQCCmR2MgJHrF9bsAvyUE';
+let videoTarget;
 
 app.get("/", (req, res) => {
     res.render("index.ejs");
+})
+
+app.get("/video", (req, res) => {
+    console.log(videoTarget.player.embedHtml);
+    res.render("index.ejs", { video: videoTarget })
 })
 
 app.post("/search", async (req, res) => {
@@ -33,9 +38,9 @@ app.post("/video", async (req, res) => {
     try {
         const request = await axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${apiKey}
         &part=snippet,player`);
+        videoTarget = request.data.items[0]
         res.render("index.ejs", { video: videoTarget })
-        let videoTarget = request.data.items[0].player
-        // console.log(request.data.items[0].player);
+        // console.log("player HTML: " + request.data.items[0].player);
     } catch (error) {
         console.error('Error fetching data:', error);
         res.render("index.ejs", { content: JSON.stringify(error.response.data) })
