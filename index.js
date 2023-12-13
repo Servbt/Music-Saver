@@ -11,9 +11,16 @@ app.get("/", (req, res) => {
 })
 
 app.post("/search", (req, res) => {
+    // passing data into searchFunc.ejs to make API request
     let videoSrch = req.body;
     console.log(videoSrch);
     res.render("index.ejs", { video: videoSrch });
+})
+
+app.post("/results", (req,res)=>{
+    let videosList = req.body.videos
+    console.log(videosList);
+    // res.render("resultsPage.ejs", {videoResults: videosList})
 })
 
 app.listen(port, () => {

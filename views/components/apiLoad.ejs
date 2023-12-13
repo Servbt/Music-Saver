@@ -1,5 +1,6 @@
 <script>
     // Make sure the client is loaded and sign-in is complete before calling this method.
+    // Authentication for the searchFunc.ejs file to make the API request
     function loadClient() {
         gapi.client.setApiKey("AIzaSyDxZy9vQXRU43KQCCmR2MgJHrF9bsAvyUE");
         return gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
@@ -9,6 +10,7 @@
     gapi.load("client:auth2", function () {
         gapi.auth2.init({ client_id: "YOUR_CLIENT_ID" });
     });
+    // as stated above from the google API Docs To prevent missed promise, loadClient is called shortly after the page/client is fully rendered/loaded.
     setTimeout(function() { 
         loadClient()
     }, 100);

@@ -10,8 +10,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <body>
+    <!-- once a search is made then we render the results page -->
     <% if (locals.video) { %>
-    <%- include("results.ejs") %>
+    <%- include("resultsPage.ejs") %>
     <% } else {  %>
     <%- include("main.ejs") %>
     <% } %> 
