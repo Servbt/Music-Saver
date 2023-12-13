@@ -8,6 +8,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const apiKey = 'AIzaSyDxZy9vQXRU43KQCCmR2MgJHrF9bsAvyUE';
 let videoTarget;
 
+let myPlaylist = [];
+function myVideo(title, id, html) {
+    this.title = title;
+    this.id = id;
+    this.html = html
+};
+
 app.get("/", (req, res) => {
     res.render("index.ejs");
 })
@@ -45,6 +52,14 @@ app.post("/video", async (req, res) => {
         console.error('Error fetching data:', error);
         res.render("index.ejs", { content: JSON.stringify(error.response.data) })
     }
+})
+
+app.post("/add-video", (req,res)=>{
+    let videoSent = req.body
+    console.log(videoSent);
+    let video = new myVideo(videoSent.videoTitle, videoSent.videoID, videoSent.videoHtml);
+    myPlaylist.push(video);
+    console.log(myPlaylist);
 })
 
 app.listen(port, () => {

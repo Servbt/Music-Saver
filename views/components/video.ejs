@@ -1,9 +1,23 @@
 <body>
-    <div class="single-video">
         <h2><%= video.id.videoId %></h2>
         <h1><%= video.snippet.title %></h1>
-        <div class="video-player"></div>
-        <%-video.player.embedHtml %>
-    </div>
-
+        <div class="video-player"><%-video.player.embedHtml %></div>
+        <button class="add-video">Add Video to Playlist</button>
 </body>
+
+    <script>
+                $(function () {
+                $(".add-video").on("click", function (e) {
+                    $.post("http://localhost:3000/add-video", 
+                        { 
+                        videoTitle: "<%=video.snippet.title%>",
+                        videoID: "<%=video.id.videoId%>",
+                        videoHtml: "<%=video.player.embedHtml%>",
+                    },
+                        function (data, status) {
+                            // window.location.replace("http://localhost:3000/video")
+                            console.log("Data: " + data + "\nStatus: " + status);
+                        });
+                });
+            });
+    </script>
