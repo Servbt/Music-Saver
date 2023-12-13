@@ -1,3 +1,18 @@
-<% content.forEach(video => { %>
-    <h1><%=video.snippet.title %></h1>
-<% }); %>
+<% content.forEach(video=> { %>
+    <div class="video-link">
+        <h1>
+            <%=video.snippet.title %>
+        </h1>
+        <img src="<%=video.snippet.thumbnails.medium.url %>" alt="<%=video.snippet.title %>">
+    </div>
+    <% }); %>
+        <script>
+            $(function () {
+                $(".video-link").on("click", function (e) {
+                    var h1Text = $(this).find("h1").text();
+                    console.log(h1Text)
+                    
+                });
+            });
+        </script>
+        </script>

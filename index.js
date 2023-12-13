@@ -25,6 +25,10 @@ app.post("/search", async (req, res) => {
     }
 })
 
+app.post("/video", (req,res)=> {
+    
+})
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
