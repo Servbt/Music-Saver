@@ -17,6 +17,11 @@
         $.post("http://localhost:3000/results", body, (data, status) => {
           console.log("sent data successfully");
         });
+        // changing URL manually as well
+        $(document).ready(function () {
+          var newURL = "http://localhost:3000/results";
+          window.location.href = newURL;
+        });
       },
         function (err) { console.error("Execute error", err); });
   }

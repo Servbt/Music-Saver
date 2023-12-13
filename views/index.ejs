@@ -12,8 +12,12 @@
 <body>
     <!-- once a search is made then we render the results page -->
     <% if (locals.video) { %>
-    <%- include("resultsPage.ejs") %>
-    <% } else {  %>
-    <%- include("main.ejs") %>
-    <% } %> 
+        <%- include("resultsPage.ejs") %>
+            <% } else { %>
+                <%- include("main.ejs") %>
+                    <% } %>
+                        <% if (locals.videos) { %>
+                            <%- include("components/resultsItems.ejs") %>
+                                <% } %>
+
 </body>
