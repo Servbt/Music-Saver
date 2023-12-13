@@ -14,19 +14,32 @@ app.get("/", (req, res) => {
 
 app.post("/search", async (req, res) => {
     let videoSrch = req.body.video;
-    console.log(videoSrch)
+    // console.log(videoSrch)
     try {
         const request = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${encodeURIComponent(videoSrch)}&part=snippet&type=video&maxResults=5&key=${apiKey}`);
+        // console.log(request.data.items[0].id.videoId)
+        // console.log(request.data);
         res.render("index.ejs", { content: request.data.items })
-        console.log(request.data);
     } catch (error) {
         console.error('Error fetching data:', error);
         res.render("index.ejs", { content: JSON.stringify(error.response.data) })
     }
 })
 
-app.post("/video", (req,res)=> {
-    
+app.post("/video", async (req, res) => {
+    let videoId = req.body.video;
+    // console.log(videoId)
+    // res.render("index.ejs", { video: videoClick });
+    try {
+        const request = await axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${apiKey}
+        &part=snippet,player`);
+        res.render("index.ejs", { video: videoTarget })
+        let videoTarget = request.data.items[0].player
+        // console.log(request.data.items[0].player);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        res.render("index.ejs", { content: JSON.stringify(error.response.data) })
+    }
 })
 
 app.listen(port, () => {

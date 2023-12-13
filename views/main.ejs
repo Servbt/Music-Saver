@@ -1,7 +1,11 @@
-<body>
+<body class="main">
     <%- include("components/srchForm.ejs") %>
         <!-- once a search is made then we render the results page -->
         <% if (locals.content) { %>
             <%- include("components/results.ejs") %>
                 <% } %>
+                    <% if (locals.video) { %>
+                        <%- include("components/results.ejs") %>
+                            <% } %>
+
 </body>

@@ -1,5 +1,6 @@
 <% content.forEach(video=> { %>
     <div class="video-link">
+        <h2><%=video.id.videoId%></h2>
         <h1>
             <%=video.snippet.title %>
         </h1>
@@ -9,9 +10,12 @@
         <script>
             $(function () {
                 $(".video-link").on("click", function (e) {
-                    var h1Text = $(this).find("h1").text();
-                    console.log(h1Text)
-                    
+                    var h1Text = $(this).find("h2").text();
+                    $.post("http://localhost:3000/video", { video: h1Text},
+                        function (data, status) {
+                            window.location.replace("http://localhost:3000/video")
+                            console.log("Data: " + data + "\nStatus: " + status);
+                        });
                 });
             });
         </script>
