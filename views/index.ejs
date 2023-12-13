@@ -1,20 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music Saver</title>
 </head>
 <script src="https://apis.google.com/js/api.js"></script>
-<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-    <h1>Test H1 Header</h1>
-    <form class="text-center pt-2 form-body border border-5 rounded-5" action="/search" method="POST">
-        <label for="video" class="form-label cust-label ">Video</label>
-        <input class="form-control border border-1 rounded-0 myText" type="text" placeholder="Default input" aria-label="default input example" name="video">
-        <input class="btn btn-primary btn-lg my-3 create-button " type="submit" value="search video">
-      </form>
+<body>
+    <%- include("main.ejs") %>
 </body>
-<% if(locals.video) { %>
-<%- include("components/searchInit.ejs") %>
-<% } %>

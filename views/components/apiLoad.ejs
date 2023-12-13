@@ -1,0 +1,15 @@
+<script>
+    var btn = $(".client-load");
+    console.log(btn);
+    // Make sure the client is loaded and sign-in is complete before calling this method.
+    function loadClient() {
+        gapi.client.setApiKey("AIzaSyDxZy9vQXRU43KQCCmR2MgJHrF9bsAvyUE");
+        return gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
+            .then(function () { console.log("GAPI client loaded for API"); },
+                function (err) { console.error("Error loading GAPI client for API", err); });
+    }
+    gapi.load("client:auth2", function () {
+        gapi.auth2.init({ client_id: "YOUR_CLIENT_ID" });
+    });
+</script>
+<button onclick="loadClient().then(execute)" class="client-load"> authorize and load </button>

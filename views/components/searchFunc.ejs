@@ -1,5 +1,6 @@
-
 <script>
+  var btn = document.querySelector(".create-button");
+  console.log(btn);
   // Make sure the client is loaded and sign-in is complete before calling this method.
   function loadClient() {
     gapi.client.setApiKey("AIzaSyDxZy9vQXRU43KQCCmR2MgJHrF9bsAvyUE");
@@ -13,12 +14,12 @@
         "snippet"
       ],
       "maxResults": 25,
-        "q": "<%=video.video%>"
+      "q": "<%=video.video%>"
 
     })
       .then(function (response) {
         // Handle the results here (response.result has the parsed body).
-        console.log("Response", response);
+        console.log("Response", response.result.items);
       },
         function (err) { console.error("Execute error", err); });
   }
@@ -26,6 +27,4 @@
     gapi.auth2.init({ client_id: "YOUR_CLIENT_ID" });
   });
 </script>
-<button onclick="loadClient()"> <a action="/search">authorize and load</a> </button>
-<button onclick="execute()">execute</button>
-
+<button onclick="loadClient().then(execute)" class="client-load"> authorize and load </button>

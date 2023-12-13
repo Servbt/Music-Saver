@@ -6,7 +6,6 @@ const port = 3000;
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
 app.get("/", (req, res) => {
     res.render("index.ejs");
 })
@@ -14,7 +13,7 @@ app.get("/", (req, res) => {
 app.post("/search", (req, res) => {
     let videoSrch = req.body;
     console.log(videoSrch);
-    res.render("index.ejs", {video: videoSrch});
+    res.render("index.ejs", { video: videoSrch });
 })
 
 app.listen(port, () => {
