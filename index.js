@@ -9,10 +9,11 @@ const apiKey = 'AIzaSyDxZy9vQXRU43KQCCmR2MgJHrF9bsAvyUE';
 let videoTarget;
 
 let clientPlaylist = [];
-function myVideo(title, id, html) {
+function myVideo(title, id, html, thumbnail) {
     this.title = title;
     this.id = id;
-    this.html = html
+    this.html = html;
+    this.thumbnail = thumbnail;
 };
 
 app.get("/", (req, res) => {
@@ -20,7 +21,7 @@ app.get("/", (req, res) => {
 })
 
 app.get("/video", (req, res) => {
-    console.log(videoTarget.player.embedHtml);
+    // console.log(videoTarget.player.embedHtml);
     res.render("index.ejs", { video: videoTarget })
 })
 
@@ -50,7 +51,8 @@ app.post("/video", async (req, res) => {
         const request = await axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${apiKey}
         &part=snippet,player`);
         videoTarget = request.data.items[0]
-        res.render("index.ejs", { video: videoTarget })
+        // console.log(videoTarget.player);
+        res.render("index.ejs", { video: videoTarget });
         // console.log("player HTML: " + request.data.items[0].player);
     } catch (error) {
         console.error('Error fetching data:', error);
@@ -60,8 +62,8 @@ app.post("/video", async (req, res) => {
 
 app.post("/add-video", (req,res)=>{
     let videoSent = req.body
-    console.log(videoSent);
-    let video = new myVideo(videoSent.videoTitle, videoSent.videoID, videoSent.videoHtml);
+    // console.log(videoSent);
+    let video = new myVideo(videoSent.videoTitle, videoSent.videoID, videoSent.videoHtml, videoSent.videoThumbnail);
     clientPlaylist.push(video);
     console.log(clientPlaylist);
 })

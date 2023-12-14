@@ -1,20 +1,16 @@
 <body>
     <% content.forEach(video=> { %>
         <div class="video-link">
-            <h2>
-                <%=video.id.videoId%>
-            </h2>
-            <h1>
-                <%=video.snippet.title %>
-            </h1>
+            <h2><%=video.id.videoId%></h2>
+            <h1><%=video.snippet.title %></h1>
             <img src="<%=video.snippet.thumbnails.medium.url %>" alt="<%=video.snippet.title %>">
         </div>
         <% }); %>
-</body>
 <script>
     $(function () {
         $(".video-link").on("click", function (e) {
             var h1Text = $(this).find("h2").text();
+            console.log(h1Text);
             $.post("http://localhost:3000/video", { video: h1Text },
                 function (data, status) {
                     window.location.replace("http://localhost:3000/video")
@@ -23,3 +19,4 @@
         });
     });
 </script>
+</body>

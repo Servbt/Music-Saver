@@ -3,7 +3,6 @@
         <h1><%= video.snippet.title %></h1>
         <div class="video-player"><%-video.player.embedHtml %></div>
         <button class="add-video">Add Video to Playlist</button>
-</body>
 
     <script>
                 $(function () {
@@ -13,6 +12,7 @@
                         videoTitle: "<%=video.snippet.title%>",
                         videoID: "<%=video.id.videoId%>",
                         videoHtml: "<%=video.player.embedHtml%>",
+                        videoThumbnail:"<%=video.snippet.thumbnails.medium.url%>",
                     },
                         function (data, status) {
                             // window.location.replace("http://localhost:3000/video")
@@ -21,3 +21,4 @@
                 });
             });
     </script>
+</body>
