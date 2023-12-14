@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const apiKey = 'AIzaSyDxZy9vQXRU43KQCCmR2MgJHrF9bsAvyUE';
 let videoTarget;
 
-let myPlaylist = [];
+let clientPlaylist = [];
 function myVideo(title, id, html) {
     this.title = title;
     this.id = id;
@@ -22,6 +22,10 @@ app.get("/", (req, res) => {
 app.get("/video", (req, res) => {
     console.log(videoTarget.player.embedHtml);
     res.render("index.ejs", { video: videoTarget })
+})
+
+app.get("/playlist", (req,res)=>{
+    res.render("index.ejs", { playlist: clientPlaylist })
 })
 
 app.post("/search", async (req, res) => {
@@ -58,8 +62,8 @@ app.post("/add-video", (req,res)=>{
     let videoSent = req.body
     console.log(videoSent);
     let video = new myVideo(videoSent.videoTitle, videoSent.videoID, videoSent.videoHtml);
-    myPlaylist.push(video);
-    console.log(myPlaylist);
+    clientPlaylist.push(video);
+    console.log(clientPlaylist);
 })
 
 app.listen(port, () => {
