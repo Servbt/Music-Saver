@@ -6,8 +6,10 @@ const port = 3000;
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 const apiKey = 'AIzaSyDxZy9vQXRU43KQCCmR2MgJHrF9bsAvyUE';
-let videoTarget;
 
+
+// Gloval Variable made for persistence
+let videoTarget;
 // Playlist initialization and Video Constructor
 let clientPlaylist = [];
 function myVideo(title, id, html, thumbnail) {
@@ -17,6 +19,7 @@ function myVideo(title, id, html, thumbnail) {
     this.thumbnail = thumbnail;
 };
 
+// default home page
 app.get("/", (req, res) => {
     res.render("index.ejs");
 })
@@ -27,8 +30,10 @@ app.get("/video", (req, res) => {
 })
 
 // Route for viewing all items in users playlist, takes data from created playlist above
-app.get("/playlist", (req,res)=>{
-    res.render("index.ejs", { playlist: clientPlaylist })
+app.get("/playlist", (req, res) => {
+    let playlistString = JSON.stringify(clientPlaylist);
+    console.log(playlistString);
+    res.render("index.ejs", { playlist: clientPlaylist, playlistString: playlistString })
 })
 
 // Route that is responsible for getting whatever the user searches for using the srchForm.ejs file
@@ -58,11 +63,10 @@ app.post("/video", async (req, res) => {
 })
 
 // Route from video.ejs file for adding a video to the playlist array
-app.post("/add-video", (req,res)=>{
+app.post("/add-video", (req, res) => {
     let videoSent = req.body
     let video = new myVideo(videoSent.videoTitle, videoSent.videoID, videoSent.videoHtml, videoSent.videoThumbnail);
     clientPlaylist.push(video);
-    // console.log(clientPlaylist);
 })
 
 app.listen(port, () => {
