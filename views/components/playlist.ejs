@@ -1,5 +1,5 @@
 <body>
-
+<!-- Display for Each Item inside of the user created playlist array -->
     <% playlist.forEach(video=> { %>
         <div class="video-link">
             <h2><%=video.id%></h2>
@@ -8,6 +8,8 @@
         </div>
         <% }); %>
             <script>
+                // POST request made for youtube API for displaying a single youtube video
+                    // same functionality from the results.ejs file
                 $(function () {
                     $(".video-link").on("click", function (e) {
                         console.log("this was clicked on from playlist")

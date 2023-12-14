@@ -1,3 +1,4 @@
+<!-- Display for each item recieved from Youtube API from POST request made clientside by srchForm.ejs -->
 <body>
     <% content.forEach(video=> { %>
         <div class="video-link">
@@ -7,6 +8,7 @@
         </div>
         <% }); %>
 <script>
+                // POST request made for youtube API for displaying a single youtube video
     $(function () {
         $(".video-link").on("click", function (e) {
             var h1Text = $(this).find("h2").text();
