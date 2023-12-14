@@ -1,8 +1,8 @@
 <body class="main">
     <!-- Search Submission form for youtube API -->
-    <%- include("components/srchForm.ejs") %>q
+    <%- include("components/srchForm.ejs") %>
     <!-- route for get request for playlist data -->
-    <input id="get" type="submit" value="GET" formaction="/playlist">
+    <a href="/playlist">View Your Playlist</a>
             <!-- once a search is made then we render and display the results page with API data -->
             <% if (locals.content) { %>
                 <%- include("components/results.ejs") %>

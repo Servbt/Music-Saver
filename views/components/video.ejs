@@ -1,5 +1,5 @@
 <body>
-        <h2><%= video.id.videoId %></h2>
+        <h2><%= video.id %></h2>
         <h1><%= video.snippet.title %></h1>
         <div class="video-player"><%-video.player.embedHtml %></div>
         <button class="add-video">Add Video to Playlist</button>
@@ -10,12 +10,11 @@
                     $.post("http://localhost:3000/add-video", 
                         { 
                         videoTitle: "<%=video.snippet.title%>",
-                        videoID: "<%=video.id.videoId%>",
+                        videoID: "<%=video.id%>",
                         videoHtml: "<%=video.player.embedHtml%>",
                         videoThumbnail:"<%=video.snippet.thumbnails.medium.url%>",
                     },
                         function (data, status) {
-                            // window.location.replace("http://localhost:3000/video")
                             console.log("Data: " + data + "\nStatus: " + status);
                         });
                 });

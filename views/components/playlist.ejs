@@ -1,26 +1,23 @@
 <body>
 
-    <% content.forEach(video=> { %>
+    <% playlist.forEach(video=> { %>
         <div class="video-link">
-            <h2>
-                <%=video.id.videoId%>
-            </h2>
-            <h1>
-                <%=video.snippet.title %>
-            </h1>
-            <img src="<%=video.snippet.thumbnails.medium.url %>" alt="<%=video.snippet.title %>">
+            <h2><%=video.id%></h2>
+            <h1><%=video.title %></h1>
+            <img src="<%=video.thumbnail %>" alt="<%=video.title %>">
         </div>
         <% }); %>
-</body>
-<script>
-    $(function () {
-        $(".video-link").on("click", function (e) {
-            var h1Text = $(this).find("h2").text();
-            $.post("http://localhost:3000/video", { video: h1Text },
-                function (data, status) {
-                    window.location.replace("http://localhost:3000/video")
-                    console.log("Data: " + data + "\nStatus: " + status);
+            <script>
+                $(function () {
+                    $(".video-link").on("click", function (e) {
+                        console.log("this was clicked on from playlist")
+                        var h1Text = $(this).find("h2").text();
+                        $.post("http://localhost:3000/video", { video: h1Text },
+                            function (data, status) {
+                                window.location.replace("http://localhost:3000/video")
+                                console.log("Data: " + data + "\nStatus: " + status);
+                            });
+                    });
                 });
-        });
-    });
-</script>
+            </script>
+</body>
