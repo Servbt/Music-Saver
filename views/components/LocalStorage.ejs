@@ -1,18 +1,3 @@
-<!-- if data was passed in from server side then allow for current playlist to be saved -->
-<% if (locals.playlist) { %>
-    <script>
-        let myPlaylist = "<%=playlistString%>";
-        function storePlaylist() {
-            localStorage.setItem("localPlaylist", myPlaylist);
-        }
-        $(function () {
-            $(".save-playlist").on("click", function (e) {
-                storePlaylist();
-            });
-        });
-    </script>
-    <% } %>
-
         <script>
             // variable init/ targetting for functionality
             let jsonObject;
@@ -23,9 +8,7 @@
 
             function retrievePlaylist() {
                 let newPlaylist = localStorage.getItem("localPlaylist");
-                // curtesy of chatGPT this code is for decoding myPlaylist into the proper data structure
-                var decodedString = new DOMParser().parseFromString(newPlaylist, "text/html").body.textContent;
-                var jsonObject = JSON.parse(decodedString);
+                var jsonObject = JSON.parse(newPlaylist);
                 console.log(jsonObject);
 
                 // functionality for filling playlist container:
@@ -53,19 +36,21 @@
                 $(function () {
                     // functionality for deleting a video from the local playlist
                     $(document).on("click", ".local-deleteBtn", function (e) {
-                    // find index by looking for html id
+                        // find index by looking for html id
                         var $thisElement = $(this);
                         var elementId = $thisElement.attr('id');
                         console.log(elementId);
-                    // remove and confirm with user
-                    playlistContainer.prepend(`<h1>${jsonObject[elementId].title} was removed from local playlist</h1>`)
+                        // remove and confirm with user
+                        playlistContainer.prepend(`<h1>${jsonObject[elementId].title} was removed from local playlist</h1>`)
                         console.log(jsonObject)
                         jsonObject.splice(elementId, 1);
                     });
-                    // Same issue with updating Local playlist as above
-                    $(document).on("click", ".update-local-playlist", function (e) {
-                        localStorage.setItem("localPlaylist", JSON.stringify(jsonObject));
-                    });
+                });
+                // Same issue with updating Local playlist as above
+                $(document).on("click", ".update-local-playlist", function (e) {
+                    let newObject = JSON.stringify(jsonObject);
+                    console.log(newObject)
+                    localStorage.setItem("localPlaylist", newObject);
                 });
 
             };
@@ -81,6 +66,7 @@
                     updateLclLink.toggleClass("hide")
 
                 });
+
             });
 
 

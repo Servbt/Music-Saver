@@ -1,0 +1,15 @@
+<!-- if data was passed in from server side then allow for current playlist to be saved -->
+    <script>
+        let myPlaylist = "<%=playlistString%>";
+        function storePlaylist() {
+            // curtesy of chatGPT this code is for decoding myPlaylist into the proper data structure
+            var decodedString = new DOMParser().parseFromString(myPlaylist, "text/html").body.textContent;
+            console.log(decodedString);
+            localStorage.setItem("localPlaylist", decodedString);
+        };
+        $(function () {
+            $(".save-playlist").on("click", function (e) {
+                storePlaylist();
+            });
+        });
+    </script>
