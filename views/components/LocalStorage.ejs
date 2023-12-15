@@ -31,34 +31,36 @@
                 // functionality for filling playlist container:
                 // loop over each item in local storage playlist and create video cards for each item
                 const playlistContainer = $(".local-playlist-cont");
+                let count = -1;
                 jsonObject.forEach(video => {
                     const title = video.title;
                     const videoId = video.id;
                     const thumbnail = video.thumbnail;
-
+                    count++;
                     playlistContainer.append(
-                        `<div class="video-link">
+                        `<div class="video-link local-link ${count}">
                         <h1>${title}</h1>
                         <h2>${videoId}</h2>
                         <img src="${thumbnail}" alt="${title}"></img>
                     </div>
-                    <button class="local-deleteBtn">Delete From Local playlist</button>
+                    <button class="local-deleteBtn" id="${count}">
+                        Delete From Local playlist
+                        </button>
                     `
                     );
                 });
 
-                // due to scope I'm placing the DELETE functionality for the local storage video inside the retrieve function
                 $(function () {
                     // functionality for deleting a video from the local playlist
                     $(document).on("click", ".local-deleteBtn", function (e) {
-                        // variable init
-                        var id = $(".video-link").find("h2").text();
-                        var title =$(".video-link").find("h1").text();
-                        // find index by looking for object property
-                        var index = jsonObject.map(e => e.id).indexOf(id);
-                        // remove and confirm with user
-                        playlistContainer.prepend(`<h1>${title} was removed from local playlist</h1>`)
-                        jsonObject.splice(index, 1);
+                    // find index by looking for html id
+                        var $thisElement = $(this);
+                        var elementId = $thisElement.attr('id');
+                        console.log(elementId);
+                    // remove and confirm with user
+                    playlistContainer.prepend(`<h1>${jsonObject[elementId].title} was removed from local playlist</h1>`)
+                        console.log(jsonObject)
+                        jsonObject.splice(elementId, 1);
                     });
                     // Same issue with updating Local playlist as above
                     $(document).on("click", ".update-local-playlist", function (e) {
