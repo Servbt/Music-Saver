@@ -20,7 +20,7 @@
             const localLink = $(".local-playlist");
             const updateLclLink = $(".update-local-playlist");
             const deleteBtn = $(".delete-button");
-            
+
             function retrievePlaylist() {
                 let newPlaylist = localStorage.getItem("localPlaylist");
                 // curtesy of chatGPT this code is for decoding myPlaylist into the proper data structure
@@ -37,13 +37,35 @@
                     const thumbnail = video.thumbnail;
 
                     playlistContainer.append(
-                    `<div class="video-link">
+                        `<div class="video-link">
                         <h1>${title}</h1>
                         <h2>${videoId}</h2>
                         <img src="${thumbnail}" alt="${title}"></img>
-                    </div>`
+                    </div>
+                    <button class="local-deleteBtn">Delete From Local playlist</button>
+                    `
                     );
                 });
+
+                // due to scope I'm placing the DELETE functionality for the local storage video inside the retrieve function
+                $(function () {
+                    // functionality for deleting a video from the local playlist
+                    $(document).on("click", ".local-deleteBtn", function (e) {
+                        // variable init
+                        var id = $(".video-link").find("h2").text();
+                        var title =$(".video-link").find("h1").text();
+                        // find index by looking for object property
+                        var index = jsonObject.map(e => e.id).indexOf(id);
+                        // remove and confirm with user
+                        playlistContainer.prepend(`<h1>${title} was removed from local playlist</h1>`)
+                        jsonObject.splice(index, 1);
+                    });
+                    // Same issue with updating Local playlist as above
+                    $(document).on("click", ".update-local-playlist", function (e) {
+                        localStorage.setItem("localPlaylist", JSON.stringify(jsonObject));
+                    });
+                });
+
             };
             // functionality responsible for showing the local playlist on btn click
             $(function () {
@@ -58,5 +80,6 @@
 
                 });
             });
+
 
         </script>

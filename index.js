@@ -51,11 +51,9 @@ app.post("/search", async (req, res) => {
 // Route from results.ejs file, once a video is clicked a API request for that singular videos info is made and used to render the page
 app.post("/video", async (req, res) => {
     let videoId = req.body.video;
-    console.log(videoId);
     try {
         const request = await axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${apiKey}&part=snippet,player`);
         videoTarget = request.data.items[0]
-        // console.log(videoTarget)
         res.render("index.ejs", { video: videoTarget });
     } catch (error) {
         console.error('Error fetching data:', error);
@@ -73,7 +71,7 @@ app.post("/add-video", (req, res) => {
 app.post("/remove", (req,res)=>{
     let videoRm = req.body.video;
     clientPlaylist.splice(videoRm, 1);
-    console.log(clientPlaylist);
+    // console.log(clientPlaylist);
 })
 
 app.listen(port, () => {

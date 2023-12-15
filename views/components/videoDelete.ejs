@@ -1,15 +1,19 @@
 <script>
-    // POST request made for youtube API for displaying a single youtube video
-        // functionality is in localPlaylist, Playlist, and results.ejs
+    // POST request made for youtube API for deleting a single youtube video from playlist
+    // functionality is in localPlaylist, Playlist, and results.ejs
     $(function () {
-        $(".delete-button").on("click", function (e) {
+        $(document).on("click", ".delete-button", function (e) {
             var h2text = $(".video-link").find("h2").text();
-            console.log("delete button was clicked for ID: " + h2text)
+            var vtitle = $(".video-link").find("h1").text();
+            $(".delete-notice").prepend(`<h1>${vtitle} was removed from current playlist</h1>`)
             $.post("http://localhost:3000/remove", { video: h2text },
                 function (data, status) {
-                    window.location.replace("http://localhost:3000/playlist")
+                    // window.location.replace("http://localhost:3000/playlist")
                     console.log("Data: " + data + "\nStatus: " + status);
                 });
         });
     });
+
+
+
 </script>
