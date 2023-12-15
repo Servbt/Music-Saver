@@ -25,7 +25,7 @@
                 playlistContainer.each(function () {
                     console.log(this);
                 });
-
+                
                 // loop over each item in local storage playlist
                 jsonObject.forEach(video => {
                     const title = video.title;
@@ -34,7 +34,7 @@
 
                     playlistContainer.append(`<p><b>Title:</b> ${title}</p>
                            <p><b>Video ID:</b> ${videoId}</p>
-                           <p><b>thumbnail:</b> ${thumbnail}</p>
+                           <img src="${thumbnail}" alt="${title}"></img>
                            <hr>`);
                 });
 
