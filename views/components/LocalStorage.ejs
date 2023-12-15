@@ -14,6 +14,8 @@
 
         <script>
             let jsonObject;
+            const hidePlaylist = $(".video-link");
+            const localLink = $(".local-playlist")
             function retrievePlaylist() {
                 let newPlaylist = localStorage.getItem("localPlaylist");
                 // curtesy of chatGPT this code is for decoding myPlaylist into the proper data structure
@@ -25,8 +27,10 @@
                 playlistContainer.each(function () {
                     console.log(this);
                 });
-                
-                // loop over each item in local storage playlist
+
+
+
+                // loop over each item in local storage playlist and create video cards for each item
                 jsonObject.forEach(video => {
                     const title = video.title;
                     const videoId = video.id;
@@ -44,6 +48,10 @@
             $(function () {
                 $(".local-playlist").on("click", function (e) {
                     retrievePlaylist();
+                    hidePlaylist.toggleClass("hide")
+                    localLink.toggleClass("hide")
+
+
                 });
             });
         </script>
