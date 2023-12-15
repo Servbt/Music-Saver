@@ -1,33 +1,49 @@
 <% if (locals.playlist) { %>
     <script>
-    let myPlaylist = "<%=playlistString%>";
+        let myPlaylist = "<%=playlistString%>";
+        function storePlaylist() {
+            localStorage.setItem("localPlaylist", myPlaylist);
+        }
+        $(function () {
+            $(".save-playlist").on("click", function (e) {
+                storePlaylist();
+            });
+        });
     </script>
     <% } %>
 
-<script>
-    let jsonObject;
-    function storePlaylist() {
-        localStorage.setItem("localPlaylist", myPlaylist);
-    }
-    function retrievePlaylist() {
-        let newPlaylist = localStorage.getItem("localPlaylist");
-        // curtesy of chatGPT this code is for decoding myPlaylist into the proper data structure
-        var decodedString = new DOMParser().parseFromString(newPlaylist, "text/html").body.textContent;
-        var jsonObject = JSON.parse(decodedString);
-        console.log(jsonObject);
-        // functionality for filling playlist container
-        const playlistContainer = $("local-playlist-cont");
-        console.log(playlistContainer);
+        <script>
+            let jsonObject;
+            function retrievePlaylist() {
+                let newPlaylist = localStorage.getItem("localPlaylist");
+                // curtesy of chatGPT this code is for decoding myPlaylist into the proper data structure
+                var decodedString = new DOMParser().parseFromString(newPlaylist, "text/html").body.textContent;
+                var jsonObject = JSON.parse(decodedString);
+                console.log(jsonObject);
+                // functionality for filling playlist container
+                const playlistContainer = $(".local-playlist-cont");
+                playlistContainer.each(function () {
+                    console.log(this);
+                });
 
-    }
-    $(function () {
-        $(".save-playlist").on("click", function (e) {
-            storePlaylist();
-        });
-    });
-    $(function () {
-        $(".local-playlist").on("click", function (e) {
-            retrievePlaylist();
-        });
-    });
-</script>
+                // loop over each item in local storage playlist
+                jsonObject.forEach(video => {
+                    const title = video.title;
+                    const videoId = video.id;
+                    const thumbnail = video.thumbnail;
+
+                    playlistContainer.append(`<p><b>Title:</b> ${title}</p>
+                           <p><b>Video ID:</b> ${videoId}</p>
+                           <p><b>thumbnail:</b> ${thumbnail}</p>
+                           <hr>`);
+                });
+
+
+            }
+
+            $(function () {
+                $(".local-playlist").on("click", function (e) {
+                    retrievePlaylist();
+                });
+            });
+        </script>
