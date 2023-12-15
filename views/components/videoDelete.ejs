@@ -7,13 +7,10 @@
             var elementId = $thisElement.attr('id');
             console.log(elementId);
             // $(".delete-notice").prepend(`<h1> was removed from current playlist</h1>`)
-            $.post("http://localhost:3000/remove", { video: elementId },
-                function (data, status) {
-                    console.log("Data: " + data + "\nStatus: " + status);
-                });
-                // refreshes the page to show user change in website
-                window.location.replace("http://localhost:3000/playlist")
-        });
+            $.post("http://localhost:3000/remove", { video: elementId });
+            // refreshes the page to show user change in website
+            window.location.replace("http://localhost:3000/playlist")
+            });
     });
 
 
