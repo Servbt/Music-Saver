@@ -33,7 +33,8 @@ app.get("/video", (req, res) => {
 app.get("/playlist", (req, res) => {
     let playlistString = JSON.stringify(clientPlaylist);
     // console.log(playlistString);
-    res.render("index.ejs", { playlist: clientPlaylist, playlistString: playlistString })
+    let countforID = 0;
+    res.render("index.ejs", { playlist: clientPlaylist, playlistString: playlistString, count:countforID })
 })
 
 // Route that is responsible for getting whatever the user searches for using the srchForm.ejs file

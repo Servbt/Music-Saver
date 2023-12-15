@@ -5,13 +5,15 @@
     <a class="update-local-playlist hide" href="playlist">Update Local Playlist</a>
 <!-- Display for Each Item inside of the user created playlist array -->
     <div class="delete-notice"></div>
-
     <% playlist.forEach(video=> { %>
         <div class="video-link">
             <h2><%=video.id%></h2>
             <h1><%=video.title %></h1>
             <img src="<%=video.thumbnail %>" alt="<%=video.title %>">
         </div>
-        <button class="delete-button">Delete From playlist</button>
+        <!-- passing in count server side to make so we can target the index -->
+        <button class="delete-button" id="<%=count++%>" href="/playlist">Delete From playlist</button>
         <% }); %>
 </body>
+    <%- include("videoDelete.ejs") %>
+
