@@ -1,6 +1,7 @@
 <body class="playlist-cont">
     <button class="save-playlist">Save Playlist Locally</button>
     <a class="local-playlist">Retrieve Playlist Locally</a>
+    <a class="update-local-playlist hide">Update Local Playlist</a>
 <!-- Display for Each Item inside of the user created playlist array -->
     <% playlist.forEach(video=> { %>
         <div class="video-link">
@@ -8,7 +9,10 @@
             <h1><%=video.title %></h1>
             <img src="<%=video.thumbnail %>" alt="<%=video.title %>">
         </div>
+        <button class="delete-button">Delete From playlist</button>
         <% }); %>
             <%- include("videoFind.ejs") %>
             <%- include("LocalStorage.ejs") %>
+            <%- include("videoDelete.ejs") %>
+
 </body>

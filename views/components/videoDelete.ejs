@@ -2,12 +2,12 @@
     // POST request made for youtube API for displaying a single youtube video
         // functionality is in localPlaylist, Playlist, and results.ejs
     $(function () {
-        $(document).on("click", ".video-link", function (e) {
-            console.log("this was clicked on from playlist")
-            var h2text = $(this).find("h2").text();
-            $.post("http://localhost:3000/video", { video: h2text },
+        $(".delete-button").on("click", function (e) {
+            var h2text = $(".video-link").find("h2").text();
+            console.log("delete button was clicked for ID: " + h2text)
+            $.post("http://localhost:3000/remove", { video: h2text },
                 function (data, status) {
-                    window.location.replace("http://localhost:3000/video")
+                    window.location.replace("http://localhost:3000/playlist")
                     console.log("Data: " + data + "\nStatus: " + status);
                 });
         });
