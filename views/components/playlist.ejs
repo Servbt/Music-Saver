@@ -1,6 +1,6 @@
 <body>
     <button class="save-playlist">Save Playlist Locally</button>
-    <button class="local-playlist">Retrieve Playlist Locally</button>
+    <a class="local-playlist" href="/">Retrieve Playlist Locally</a>
 <!-- Display for Each Item inside of the user created playlist array -->
     <% playlist.forEach(video=> { %>
         <div class="video-link">
@@ -9,20 +9,6 @@
             <img src="<%=video.thumbnail %>" alt="<%=video.title %>">
         </div>
         <% }); %>
-            <script>
-                // POST request made for youtube API for displaying a single youtube video
-                    // same functionality from the results.ejs file
-                $(function () {
-                    $(".video-link").on("click", function (e) {
-                        console.log("this was clicked on from playlist")
-                        var h1Text = $(this).find("h2").text();
-                        $.post("http://localhost:3000/video", { video: h1Text },
-                            function (data, status) {
-                                window.location.replace("http://localhost:3000/video")
-                                console.log("Data: " + data + "\nStatus: " + status);
-                            });
-                    });
-                });
-            </script>
+            <%- include("videoFind.ejs") %>
             <%- include("LocalStorage.ejs") %>
 </body>

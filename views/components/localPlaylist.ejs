@@ -1,0 +1,8 @@
+<body>
+    <!-- Display for Each Item inside of the user created playlist array -->
+    <div class="local-playlist-cont"></div>
+    <%- include("videoFind.ejs") %>
+        <% if (locals.playlist) { %>
+            <%- include("LocalStorage.ejs") %>
+                <% } %>
+</body>

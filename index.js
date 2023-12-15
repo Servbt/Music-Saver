@@ -24,6 +24,10 @@ app.get("/", (req, res) => {
     res.render("index.ejs");
 })
 
+// app.get("/saved-playlist", (req, res) => {
+//     res.render("index.ejs");
+// })
+
 // Actual route used to render a single video's data, the data itself comes from the /video post route below
 app.get("/video", (req, res) => {
     res.render("index.ejs", { video: videoTarget })

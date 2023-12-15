@@ -1,15 +1,24 @@
-<script>
+<% if (locals.playlist) { %>
+    <script>
     let myPlaylist = "<%=playlistString%>";
+    </script>
+    <% } %>
+
+<script>
+    let jsonObject;
     function storePlaylist() {
         localStorage.setItem("localPlaylist", myPlaylist);
     }
     function retrievePlaylist() {
         let newPlaylist = localStorage.getItem("localPlaylist");
-
         // curtesy of chatGPT this code is for decoding myPlaylist into the proper data structure
         var decodedString = new DOMParser().parseFromString(newPlaylist, "text/html").body.textContent;
         var jsonObject = JSON.parse(decodedString);
         console.log(jsonObject);
+        // functionality for filling playlist container
+        const playlistContainer = $("local-playlist-cont");
+        console.log(playlistContainer);
+
     }
     $(function () {
         $(".save-playlist").on("click", function (e) {
@@ -21,7 +30,4 @@
             retrievePlaylist();
         });
     });
-
-
-
 </script>

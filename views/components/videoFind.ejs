@@ -1,0 +1,15 @@
+<script>
+    // POST request made for youtube API for displaying a single youtube video
+        // same functionality from the results.ejs file
+    $(function () {
+        $(".video-link").on("click", function (e) {
+            console.log("this was clicked on from playlist")
+            var h1Text = $(this).find("h2").text();
+            $.post("http://localhost:3000/video", { video: h1Text },
+                function (data, status) {
+                    window.location.replace("http://localhost:3000/video")
+                    console.log("Data: " + data + "\nStatus: " + status);
+                });
+        });
+    });
+</script>

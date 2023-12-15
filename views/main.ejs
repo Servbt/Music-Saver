@@ -1,19 +1,22 @@
 <body class="main">
     <!-- Search Submission form for youtube API (always in view) -->
     <%- include("components/srchForm.ejs") %>
-    <!-- route for get request for playlist data (always in view) -->
-    <a href="/playlist">View Your Playlist</a>
-            <!-- once a search is made then we render and display the results page with API data -->
-            <% if (locals.content) { %>
-                <%- include("components/results.ejs") %>
-                    <% } %>
+        <!-- route for get request for playlist data (always in view) -->
+        <a href="/playlist">View Your Playlist</a>
+        <!-- once a search is made then we render and display the results page with API data -->
+        <% if (locals.content) { %>
+            <%- include("components/results.ejs") %>
+                <% } %>
                     <!-- Display for Singular Video data -->
-                        <% if (locals.video) { %>
-                            <%- include("components/video.ejs") %>
-                                <% } %>
+                    <% if (locals.video) { %>
+                        <%- include("components/video.ejs") %>
+                            <% } %>
                                 <!-- Display for playlist data -->
-                                    <% if (locals.playlist) { %>
-                                        <%- include("components/playlist.ejs") %>
-                                            <% } %>
+                                <% if (locals.playlist) { %>
+                                    <%- include("components/playlist.ejs") %>
+                                        <% } %>
+                                        <%- include("components/localPlaylist.ejs") %>
+
+
 
 </body>
