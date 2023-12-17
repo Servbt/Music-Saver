@@ -57,15 +57,17 @@
             localStorage.setItem("localPlaylist", newObject);
         });
 
-
+        
         $(".copy-local").on("click", function (e) {
+            if (jsonObject.length === 0) {
+                return console.log("can't copy an empty array")
+            };
             console.log("local copy click");
             $.post("http://localhost:3000/copy-local", { jsonObject: jsonObject },
             function (data, status) {
                     // window.location.replace("http://localhost:3000/video")
                     console.log("Data: " + data + "\nStatus: " + status);
                 });
-
         });
     };
 
