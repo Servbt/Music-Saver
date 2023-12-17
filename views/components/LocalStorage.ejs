@@ -5,6 +5,7 @@
     const localLink = $(".local-playlist");
     const updateLclLink = $(".update-local-playlist");
     const deleteBtn = $(".delete-button");
+    const copyLocal = $(".copy-local");
 
     function retrievePlaylist() {
         let newPlaylist = localStorage.getItem("localPlaylist");
@@ -33,8 +34,8 @@
             );
         });
 
+        // functionality for deleting a video from the local playlist
         $(function () {
-            // functionality for deleting a video from the local playlist
             $(document).on("click", ".local-deleteBtn", function (e) {
                 // find index by looking for html id
                 var $thisElement = $(this);
@@ -56,21 +57,32 @@
             localStorage.setItem("localPlaylist", newObject);
         });
 
+
+        $(".copy-local").on("click", function (e) {
+            console.log("local copy click");
+            $.post("http://localhost:3000/copy-local", { jsonObject: jsonObject },
+            function (data, status) {
+                    // window.location.replace("http://localhost:3000/video")
+                    console.log("Data: " + data + "\nStatus: " + status);
+                });
+
+        });
     };
+
     // functionality responsible for showing the local playlist on btn click
     $(function () {
         $(".local-playlist").on("click", function (e) {
             retrievePlaylist();
-            // these two lines hide the local playlist when viewing the current playlist
+            // these lines hide the local playlist when viewing the current playlist
             hidePlaylist.toggleClass("hide")
             deleteBtn.toggleClass("hide")
             localLink.toggleClass("hide")
+
             // this reveals the update tag on playlist.ejs
+            copyLocal.toggleClass("hide")
             updateLclLink.toggleClass("hide")
 
         });
-
     });
-
 
 </script>

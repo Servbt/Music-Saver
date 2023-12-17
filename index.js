@@ -69,6 +69,22 @@ app.post("/add-video", (req, res) => {
     clientPlaylist.push(video);
 })
 
+app.post("/copy-local", (req,res)=>{
+    let localPlaylist = req.body.jsonObject;
+    console.log(localPlaylist);
+    if (localPlaylist.length > 0) {
+        clientPlaylist = [];
+        localPlaylist.forEach(video => {
+            clientPlaylist.push(video);
+        });
+    }
+    // Same functionality as "/playlist" route to match saved playlist to current playlist 
+    let playlistString = JSON.stringify(clientPlaylist);
+    let countforID = 0;
+    res.render("index.ejs", { playlist: clientPlaylist, playlistString: playlistString, count:countforID })
+
+})
+
 app.post("/remove", (req,res)=>{
     let videoRm = req.body.video;
     clientPlaylist.splice(videoRm, 1);
