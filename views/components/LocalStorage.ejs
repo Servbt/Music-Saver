@@ -10,7 +10,7 @@
     function retrievePlaylist() {
         let newPlaylist = localStorage.getItem("localPlaylist");
         var jsonObject = JSON.parse(newPlaylist);
-        console.log(jsonObject);
+        // console.log(jsonObject);
 
         // functionality for filling playlist container:
         // loop over each item in local storage playlist and create video cards for each item
@@ -22,12 +22,13 @@
             const thumbnail = video.thumbnail;
             count++;
             playlistContainer.append(
-                `<div class="video-link local-link ${count}">
+                // I give add an arbitrary count to the videoId value to avoid any duplicate videos being targeted 
+                `<div class="video-link local-link ${videoId + count}">
                         <h1>${title}</h1>
                         <h2>${videoId}</h2>
                         <img src="${thumbnail}" alt="${title}"></img>
                     </div>
-                    <button class="local-deleteBtn" id="${count}">
+                    <button class="local-deleteBtn" id="${videoId + count}">
                         Delete From Local playlist
                         </button>
                     `
@@ -41,9 +42,7 @@
                 var $thisElement = $(this);
                 var elementId = $thisElement.attr('id');
                 console.log(elementId);
-                // remove and confirm with user
-                // playlistContainer.prepend(`<h1>${jsonObject[elementId].title} was removed from local playlist</h1>`);
-                console.log(jsonObject);
+                //  Deletes the value denoted by the code above
                 jsonObject.splice(elementId, 1);
                 // hides both the Delete button and Content Div from display
                 $($thisElement).addClass("hide");
