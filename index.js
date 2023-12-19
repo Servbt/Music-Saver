@@ -85,10 +85,16 @@ app.post("/copy-local", (req,res)=>{
 
 })
 
+// route for deleting a single video on playlist.ejs
 app.post("/remove", (req,res)=>{
     let videoRm = req.body.video;
     clientPlaylist.splice(videoRm, 1);
     // console.log(clientPlaylist);
+})
+
+app.get("/delete-playlist", (req,res)=>{
+    clientPlaylist = [];
+    res.render("index.ejs");
 })
 
 app.listen(port, () => {

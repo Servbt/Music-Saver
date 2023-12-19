@@ -1,11 +1,14 @@
 <script>
-    // variable init/ targetting for functionality
+    // variable init/ targetting for display/functionality
     let jsonObject;
     const hidePlaylist = $(".video-link");
     const localLink = $(".local-playlist");
-    const updateLclLink = $(".update-local-playlist");
+    const updateLocal = $(".update-local-playlist");
     const deleteBtn = $(".delete-button");
     const copyLocal = $(".copy-local");
+    const playlistSave = $(".save-playlist");
+    const deleteLocal = $(".empty-local");
+    const deleteCurrent = $(".empty-current");
 
     function retrievePlaylist() {
         let newPlaylist = localStorage.getItem("localPlaylist");
@@ -56,10 +59,18 @@
             localStorage.setItem("localPlaylist", newObject);
         });
 
-        
+
+        $(document).on("click", ".empty-local", function (e) {
+            playlistContainer.prepend(`<h1>Saved Playlist Deleted</h1>`)
+            let newObject = JSON.stringify([]);
+            console.log(newObject);
+            localStorage.setItem("localPlaylist", newObject);
+        });
+
+        // Functionality for copying over the local storage playlist into the current playlist
         $(".copy-local").on("click", function (e) {
             if (jsonObject.length === 0) {
-                return console.log("can't copy an empty array")
+                return console.log("can't copy an empty playlist")
             };
             console.log("local copy click");
             $.post("http://localhost:3000/copy-local", { jsonObject: jsonObject },
@@ -75,13 +86,16 @@
         $(".local-playlist").on("click", function (e) {
             retrievePlaylist();
             // these lines hide the local playlist when viewing the current playlist
-            hidePlaylist.toggleClass("hide")
-            deleteBtn.toggleClass("hide")
-            localLink.toggleClass("hide")
-
+            hidePlaylist.toggleClass("hide");
+            deleteBtn.toggleClass("hide");
+            localLink.toggleClass("hide");
+            playlistSave.toggleClass("hide");
+            deleteCurrent.toggleClass("hide");
+            
             // this reveals the update tag on playlist.ejs
+            deleteLocal.toggleClass("hide");
             copyLocal.toggleClass("hide")
-            updateLclLink.toggleClass("hide")
+            updateLocal.toggleClass("hide")
 
         });
     });

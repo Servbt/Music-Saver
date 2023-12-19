@@ -10,8 +10,22 @@
             $.post("http://localhost:3000/remove", { video: elementId });
             // refreshes the page to show user change in website
             window.location.replace("http://localhost:3000/playlist")
-            });
+        });
     });
+
+
+    $(function () {
+        $(document).on("click", ".empty-current", function (e) {
+            // $(".delete-notice").prepend(`<h1> was removed from current playlist</h1>`)
+            $.get("http://localhost:3000/delete-playlist", function () {
+                console.log("success, current playlist deleted");
+            });
+            // refreshes the page to show user change in website
+            window.location.replace("http://localhost:3000/")
+            $(".local-playlist-cont").prepend(`<h1>Current Playlist Deleted</h1>`)
+        });
+    });
+
 
 
 
