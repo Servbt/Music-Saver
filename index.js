@@ -69,6 +69,7 @@ app.post("/add-video", (req, res) => {
     clientPlaylist.push(video);
 })
 
+// route for sending over info from local storage to server for current playlist
 app.post("/copy-local", (req,res)=>{
     let localPlaylist = req.body.jsonObject;
     console.log(localPlaylist);
@@ -92,6 +93,7 @@ app.post("/remove", (req,res)=>{
     // console.log(clientPlaylist);
 })
 
+// route that just empties playlist array server side
 app.get("/delete-playlist", (req,res)=>{
     clientPlaylist = [];
     res.render("index.ejs");

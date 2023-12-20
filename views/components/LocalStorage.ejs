@@ -59,7 +59,7 @@
             localStorage.setItem("localPlaylist", newObject);
         });
 
-
+        // functionality for deleting a saved playlist
         $(document).on("click", ".empty-local", function (e) {
             playlistContainer.prepend(`<h1>Saved Playlist Deleted</h1>`)
             let newObject = JSON.stringify([]);
