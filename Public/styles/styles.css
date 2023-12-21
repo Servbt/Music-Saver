@@ -13,6 +13,7 @@
 
 .main {
     background-color: var(--myJet);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* srchForm.ejs */
@@ -22,10 +23,24 @@
     color: var(--myCyan);
 }
 
-.search-form {
-    
-}
-
 .srch-btn {
     background-color: var(--myBlack);
+}
+
+/* main.ejs */
+
+.view-link {
+    text-decoration: none;
+    color: var(--myCyan);
+
+}
+
+/* results.ejs */
+
+.video-card {
+    width: 70%;
+}
+
+.srch-res {
+    color: var(--myWhite);
 }

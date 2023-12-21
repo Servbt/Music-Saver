@@ -2,7 +2,7 @@
     <!-- Search Submission form for youtube API (always in view) -->
     <%- include("components/srchForm.ejs") %>
         <!-- route for get request for playlist data (always in view) -->
-        <a href="/playlist">View Your Playlist</a>
+        <a href="/playlist" class="view-link fs-5 py-5">View Your Playlist</a>
         <!-- once a search is made then we render and display the results page with API data -->
         <% if (locals.content) { %>
             <%- include("components/results.ejs") %>

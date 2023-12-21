@@ -1,10 +1,10 @@
 <!-- Display for each item recieved from Youtube API from POST request made clientside by srchForm.ejs -->
-<body>
+<body class="row">
     <% content.forEach(video=> { %>
-        <div class="video-link">
-            <h2><%=video.id.videoId%></h2>
-            <h1><%=video.snippet.title %></h1>
+        <div class="video-link video-card my-5 py-2 col border-bottom border-5">
+            <h1 class="srch-res fs-3"><%=video.snippet.title %></h1>
             <img src="<%=video.snippet.thumbnails.medium.url %>" alt="<%=video.snippet.title %>">
+            <h2 class="srch-res fs-6">Video ID: <%=video.id.videoId%></h2>
         </div>
         <% }); %>
         <%- include("videoFind.ejs") %>
