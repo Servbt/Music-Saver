@@ -1,4 +1,31 @@
+:root {
+    --myCyan: #30BCED;
+    --myJet: #303036;
+    --myWhite: #FFFAFF;
+    --myRed: #FC5130;
+    --myBlack: #050401;
+}
 
+/* Class Tied to eventlistener in LocalStorage.ejs */
 .hide {
     display: none;
+}
+
+.main {
+    background-color: var(--myJet);
+}
+
+/* srchForm.ejs */
+
+.home-route {
+    text-decoration: none;
+    color: var(--myCyan);
+}
+
+.search-form {
+    
+}
+
+.srch-btn {
+    background-color: var(--myBlack);
 }

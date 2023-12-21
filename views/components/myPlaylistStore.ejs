@@ -9,6 +9,7 @@
         };
         $(function () {
             $(".save-playlist").on("click", function (e) {
+                // checks how long current playlist is (since its a string we are just checking for "[]" to declare it as empty)
                 let playlistCheckVal = "<%=playlistString.length%>";
                 if (playlistCheckVal == 2) {
                     return console.log("can't save an empty playlist");
