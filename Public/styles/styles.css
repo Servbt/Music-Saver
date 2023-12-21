@@ -44,3 +44,14 @@
 .srch-res {
     color: var(--myWhite);
 }
+
+/* video.ejs */
+
+.cust-card {
+    width: 70%;
+    background-color: var(--myBlack);
+}
+
+.srch-res {
+    color: var(--myWhite);
+}
