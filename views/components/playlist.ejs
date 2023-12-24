@@ -1,22 +1,22 @@
 
 <body class="playlist-cont">
-    <button class="save-playlist">Save Playlist Locally</button>
-    <button class="local-playlist">Retrieve Playlist Locally</button>
-    <button class="update-local-playlist hide" >Update Local Playlist</button>
-    <button class="copy-local hide" >Copy Local Playlist over</button>
-    <button class="empty-local hide" >Delete Local Playlist </button>
-    <button class="empty-current" >Delete Current Playlist </button>
+        <button class="save-playlist btn btn-dark mx-1">Save Playlist Locally</button>
+        <button class="local-playlist btn btn-dark mx-1">Retrieve Playlist Locally</button>
+        <button class="update-local-playlist collapse btn btn-dark mx-1" >Update Local Playlist</button>
+        <button class="copy-local collapse btn btn-dark mx-1" >Copy Local Playlist over</button>
+        <button class="empty-local collapse btn btn-dark mx-1" >Delete Local Playlist </button>
+        <button class="empty-current btn btn-dark mx-1" >Delete Current Playlist </button>
 
 <!-- Display for Each Item inside of the user created playlist array -->
     <div class="delete-notice"></div>
     <% playlist.forEach(video=> { %>
-        <div class="video-link">
-            <h2><%=video.id%></h2>
-            <h1><%=video.title %></h1>
+        <div class="video-link video-card my-3 pt-5 col ">
+            <h1 class="srch-res"><%=video.title %></h1>
+            <h2 class="srch-res fs-6"><%=video.id%></h2>
             <img src="<%=video.thumbnail %>" alt="<%=video.title %>">
         </div>
         <!-- passing in count server side to make so we can target the index -->
-        <button class="delete-button" id="<%=count++%>" href="/playlist">Delete From playlist</button>
+        <button class="delete-button btn btn-danger" id="<%=count++%>" href="/playlist">Delete From playlist</button>
         <% }); %>
 </body>
     <%- include("videoDelete.ejs") %>

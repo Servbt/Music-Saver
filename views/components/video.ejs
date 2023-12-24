@@ -1,13 +1,11 @@
 <!-- This is the display for a singular video from the GET "/video" Route -->
-<body>
-<body class="cust-card">
-    <h1 class="srch-res pt-5"><%= video.snippet.title %></h1>
-    <h2 class="srch-res fs-6"><%= video.id %></h2>
-    <div class="video-player"><%-video.player.embedHtml %></div>
-    <button class="add-video btn btn-dark srch-btn">Add Video to Playlist</button>        
-    
-</body>
+<body class="video-card border border-bottom border-5">
 
+        <h1 class="srch-res pt-5"><%= video.snippet.title %></h1>
+        <h2 class="srch-res fs-6"><%= video.id %></h2>
+        <div class="video-player"><%-video.player.embedHtml %></div>
+        <button class="add-video btn btn-dark srch-btn mb-3">Add Video to Playlist</button> 
+        <!-- <div class="border border-bottom border-5 cust-card"></div> -->
 
     <script>
         // POST request made to Client Side for saving a video to an Array for LocalStorage
