@@ -8,15 +8,16 @@
         <button class="empty-current btn btn-dark mx-1" >Delete Current Playlist </button>
 
 <!-- Display for Each Item inside of the user created playlist array -->
-    <div class="delete-notice"></div>
+    <div class="playlist-head fs-1 pt-2 ps-3">Current Playlist</div>
+    <div class="playlist-head-2 collapse fs-1 pt-2 ps-3">Saved Playlist</div>
     <% playlist.forEach(video=> { %>
-        <div class="video-link video-card my-3 pt-5 col ">
-            <h1 class="srch-res"><%=video.title %></h1>
-            <h2 class="srch-res fs-6"><%=video.id%></h2>
-            <img src="<%=video.thumbnail %>" alt="<%=video.title %>">
+        <div class="video-link video-card my-3 pt-2 rounded-4 col ">
+                <h1 class="srch-res ps-3"><%=video.title %></h1>
+                <h2 class="srch-res fs-6 ps-3"><%=video.id%></h2>
+                <img class="ps-3 pb-3" src="<%=video.thumbnail %>" alt="<%=video.title %>">
         </div>
         <!-- passing in count server side to make so we can target the index -->
-        <button class="delete-button btn btn-danger" id="<%=count++%>" href="/playlist">Delete From playlist</button>
+        <button class="delete-button btn btn-danger ms-3" id="<%=count++%>" href="/playlist">Delete From playlist</button>
         <% }); %>
 </body>
     <%- include("videoDelete.ejs") %>

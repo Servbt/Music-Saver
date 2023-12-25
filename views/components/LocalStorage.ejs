@@ -9,6 +9,9 @@
     const playlistSave = $(".save-playlist");
     const deleteLocal = $(".empty-local");
     const deleteCurrent = $(".empty-current");
+    const playlistHead = $(".playlist-head");
+    const playlistHead2 = $(".playlist-head-2");
+
 
     function retrievePlaylist() {
         let newPlaylist = localStorage.getItem("localPlaylist");
@@ -26,12 +29,12 @@
             count++;
             playlistContainer.append(
                 // I give add an arbitrary count to the videoId value to avoid any duplicate videos being targeted 
-                `<div class="video-link local-link my-3 pt-5 col ${videoId + count}">
-                        <h1 class="srch-res">${title}</h1>
-                        <h2 class="srch-res fs-6">${videoId}</h2>
-                        <img src="${thumbnail}" alt="${title}"></img>
+                `<div class="video-link video-card-2 local-link my-3 pt-2 rounded-4 col ${videoId + count}">
+                        <h1 class="srch-res ps-3">${title}</h1>
+                        <h2 class="srch-res fs-6 ps-3">${videoId}</h2>
+                        <img class="ps-3 pb-3" src="${thumbnail}" alt="${title}"></img>
                     </div>
-                    <button class="local-deleteBtn btn btn-danger" id="${videoId + count}">
+                    <button class="local-deleteBtn btn btn-danger ms-3" id="${videoId + count}">
                         Delete From Local playlist
                         </button>
                     `
@@ -91,6 +94,8 @@
             localLink.toggleClass("collapse");
             playlistSave.toggleClass("collapse");
             deleteCurrent.toggleClass("collapse");
+            playlistHead.toggleClass("collapse");
+            playlistHead2.toggleClass("collapse");
             
             // this reveals the update tag on playlist.ejs
             deleteLocal.toggleClass("collapse");

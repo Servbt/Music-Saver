@@ -35,6 +35,11 @@
 
 }
 
+.video-card:hover {
+    transition: 0.4s;
+    background-color: var(--myCyan);
+}
+
 /* results.ejs */
 
 .video-card {
@@ -55,3 +60,28 @@
 .srch-res {
     color: var(--myWhite);
 }
+
+/* playlist.ejs */
+
+.video-card-2:hover {
+    transition: 0.4s;
+    background-color: var(--myBlack);
+}
+
+.video-card-2 {
+    width: 70%;
+}
+
+.playlist-head {
+    color: var(--myCyan);
+
+}
+
+.playlist-head {
+    color: var(--myCyan);
+}
+
+.playlist-head-2 {
+    color: var(--myRed);
+}
+
