@@ -92,19 +92,43 @@
     .main {
         justify-content: center;
     }
+
     .btn {
         display: flex;
         margin-top: 10px;
+        width: 80vw;
+
     }
 
-    .srch-btn {
+    .hide-btn {
         display: none;
+    }
+    .srch-btn {
+        margin-left: 100px;
     }
 
     .srch-form {
         text-align: center;
-
     }
 
- 
+    .video-player {
+        display: flex;
+    }
+
+    .sing-vid {
+        padding: 20px;
+        margin-top: 20px;
+        width: 95vw;
+    }
+
+    .search-form {
+        width: 95vw;
+    }
+    
+    /* playlist.ejs */
+
+    .video-card {
+        width: 95vw;
+    }
+
 }
