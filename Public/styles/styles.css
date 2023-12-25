@@ -23,9 +23,9 @@
     color: var(--myCyan);
 }
 
-.srch-btn {
+/* .srch-btn {
     background-color: var(--myBlack);
-}
+} */
 
 /* main.ejs */
 
@@ -86,3 +86,25 @@
 }
 
 
+/* Mobile Media Query */
+
+@media (max-width: 576px) {
+    .main {
+        justify-content: center;
+    }
+    .btn {
+        display: flex;
+        margin-top: 10px;
+    }
+
+    .srch-btn {
+        display: none;
+    }
+
+    .srch-form {
+        text-align: center;
+
+    }
+
+ 
+}
