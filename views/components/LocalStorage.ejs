@@ -51,12 +51,13 @@
                 //  Deletes the value denoted by the code above
                 jsonObject.splice(elementId, 1);
                 // hides both the Delete button and Content Div from display
-                $($thisElement).addClass("hide");
-                $(`.${elementId}`).addClass("hide");
+                $($thisElement).addClass("collapse");
+                $(`.${elementId}`).addClass("collapse");
             });
         });
         // Same issue with updating Local playlist as above
         $(document).on("click", ".update-local-playlist", function (e) {
+            playlistContainer.prepend(`<h1 class="fs-1 playlist-head-2 ">Saved Playlist Updated</h1>`)
             let newObject = JSON.stringify(jsonObject);
             console.log(newObject);
             localStorage.setItem("localPlaylist", newObject);
@@ -64,7 +65,7 @@
 
         // functionality for deleting a saved playlist
         $(document).on("click", ".empty-local", function (e) {
-            playlistContainer.prepend(`<h1>Saved Playlist Deleted</h1>`)
+            playlistContainer.prepend(`<h1 class="fs-1 playlist-head-2 ">Saved Playlist Deleted</h1>`)
             let newObject = JSON.stringify([]);
             console.log(newObject);
             localStorage.setItem("localPlaylist", newObject);

@@ -14,7 +14,7 @@
         <div class="video-link video-card my-3 pt-2 rounded-4 col ">
                 <h1 class="srch-res ps-3"><%=video.title %></h1>
                 <h2 class="srch-res fs-6 ps-3"><%=video.id%></h2>
-                <img class="ps-3 pb-3" src="<%=video.thumbnail %>" alt="<%=video.title %>">
+                <img class="ps-3 pb-3 rounded-4" src="<%=video.thumbnail %>" alt="<%=video.title %>">
         </div>
         <!-- passing in count server side to make so we can target the index -->
         <button class="delete-button btn btn-danger ms-3" id="<%=count++%>" href="/playlist">Delete From playlist</button>

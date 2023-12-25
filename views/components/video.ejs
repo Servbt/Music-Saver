@@ -1,16 +1,20 @@
 <!-- This is the display for a singular video from the GET "/video" Route -->
-<body class="video-card border border-bottom border-5">
-
-        <h1 class="srch-res pt-5"><%= video.snippet.title %></h1>
-        <h2 class="srch-res fs-6"><%= video.id %></h2>
-        <div class="video-player"><%-video.player.embedHtml %></div>
-        <button class="add-video btn btn-dark srch-btn mb-3">Add Video to Playlist</button> 
+<body>
+    <div class="video-add"></div>
+    <div class="video-card rounded-5 bg-dark">
+        <h1 class="srch-res mt-3 pt-3 ps-3"><%= video.snippet.title %></h1>
+        <h2 class="srch-res fs-6 ps-3"><%= video.id %></h2>
+        <div class="video-player ps-3 pb-3 mb-3"><%-video.player.embedHtml %></div>
+    </div>
+    <button class="add-video btn btn-dark srch-btn mb-3">Add Video to Playlist</button> 
         <!-- <div class="border border-bottom border-5 cust-card"></div> -->
+    </body>
 
     <script>
         // POST request made to Client Side for saving a video to an Array for LocalStorage
                 $(function () {
                 $(".add-video").on("click", function (e) {
+            $(".video-add").append(`<h1 class="fs-1 playlist-head ps-2">Video Added to playlist</h1>`)
                     $.post("http://localhost:3000/add-video", 
                         { 
                         videoTitle: "<%=video.snippet.title%>",
@@ -24,4 +28,3 @@
                 });
             });
     </script>
-</body>
