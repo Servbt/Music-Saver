@@ -100,9 +100,12 @@
 
     }
 
+    /* srchForm.ejs */
+
     .hide-btn {
         display: none;
     }
+
     .srch-btn {
         margin-left: 100px;
     }
@@ -110,6 +113,12 @@
     .srch-form {
         text-align: center;
     }
+
+    .search-form {
+        width: 95vw;
+    }
+
+    /* video.ejs */
 
     .video-player {
         display: flex;
@@ -121,10 +130,6 @@
         width: 95vw;
     }
 
-    .search-form {
-        width: 95vw;
-    }
-    
     /* playlist.ejs */
 
     .video-card {
