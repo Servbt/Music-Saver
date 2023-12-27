@@ -1,11 +1,12 @@
 import express from "express";
 import axios from "axios";
 import bodyParser from "body-parser";
+import dotenv from "dotenv"
+dotenv.config();
 const app = express();
-const port = 3000;
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
-const apiKey = 'AIzaSyDxZy9vQXRU43KQCCmR2MgJHrF9bsAvyUE';
+
 
 
 // Gloval Variable made for session persistence
@@ -41,7 +42,7 @@ app.get("/playlist", (req, res) => {
 app.post("/search", async (req, res) => {
     let videoSrch = req.body.video;
     try {
-        const request = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${encodeURIComponent(videoSrch)}&part=snippet&type=video&maxResults=5&key=${apiKey}`);
+        const request = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${encodeURIComponent(videoSrch)}&part=snippet&type=video&maxResults=5&key=${process.env.API_KEY}`);
         res.render("index.ejs", { content: request.data.items })
     } catch (error) {
         console.error('Error fetching data:', error);
@@ -53,7 +54,7 @@ app.post("/search", async (req, res) => {
 app.post("/video", async (req, res) => {
     let videoId = req.body.video;
     try {
-        const request = await axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${apiKey}&part=snippet,player`);
+        const request = await axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${process.env.API_KEY}&part=snippet,player`);
         videoTarget = request.data.items[0]
         res.render("index.ejs", { video: videoTarget });
     } catch (error) {
@@ -99,6 +100,6 @@ app.get("/delete-playlist", (req,res)=>{
     res.render("index.ejs");
 })
 
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+app.listen(process.env.PORT, () => {
+    console.log(`Server is running on port ${process.env.PORT}`);
 });
