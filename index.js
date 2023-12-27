@@ -6,7 +6,7 @@ dotenv.config();
 const app = express();
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
-
+process.env.PORT = process.env.PORT || 3001;
 
 
 // Gloval Variable made for session persistence
