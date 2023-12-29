@@ -4,7 +4,7 @@ import bodyParser from "body-parser";
 import dotenv from "dotenv"
 dotenv.config();
 const app = express();
-app.use(express.static("public"));
+app.use(express.static("Public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 const port = process.env.PORT || 3001;
 
