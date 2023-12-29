@@ -7,7 +7,7 @@ const app = express();
 app.use(express.static("Public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 const port = process.env.PORT || 3001;
-
+const apiKey = process.env.API_KEY;
 
 // Gloval Variable made for session persistence
 let videoTarget;
@@ -42,7 +42,7 @@ app.get("/playlist", (req, res) => {
 app.post("/search", async (req, res) => {
     let videoSrch = req.body.video;
     try {
-        const request = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${encodeURIComponent(videoSrch)}&part=snippet&type=video&maxResults=5&key=${process.env.API_KEY}`);
+        const request = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${encodeURIComponent(videoSrch)}&part=snippet&type=video&maxResults=5&key=${apiKey}`);
         res.render("index.ejs", { content: request.data.items })
     } catch (error) {
         console.error('Error fetching data:', error);
@@ -54,7 +54,7 @@ app.post("/search", async (req, res) => {
 app.post("/video", async (req, res) => {
     let videoId = req.body.video;
     try {
-        const request = await axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${process.env.API_KEY}&part=snippet,player`);
+        const request = await axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${apiKey}&part=snippet,player`);
         videoTarget = request.data.items[0]
         res.render("index.ejs", { video: videoTarget });
     } catch (error) {
