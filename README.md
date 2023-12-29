@@ -39,13 +39,13 @@ With that we use a get request with the appropriate search parameter to find the
 
 ### Images
 
-![Image 1](./public/images/image1.PNG)
+![Image 1](./Public/images/image1.PNG)
 <br>
 
 
-![Image 1](./public/images/image2.PNG)
+![Image 1](./Public/images/image2.PNG)
 <br>
 
 
-![Image 1](./public/images/mobileImage.PNG)
+![Image 1](./Public/images/mobileImage.PNG)
 <br>
