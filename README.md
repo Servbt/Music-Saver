@@ -2,7 +2,16 @@
 
 The goal of this project is to allow users to search for youtube videos and save them into a "playlist" of sorts that honestly just saves the name of the videos. I listen to alot of videogame music and hate it whenever it gets taken down. so having a list of all my songs to look back at would be super useful.
 
-### Pseudo-Code
+
+### Tools Used
+
+-   Node
+-   Express
+-   EJS
+-   Axios
+
+
+### Pseudo-Code/Functionality
 
 When the user lands on the main page I want:
 >   a search bar that allows you to look for youtube videos<br>
@@ -28,3 +37,15 @@ With that we use a get request with the appropriate search parameter to find the
 ---
 
 
+### Images
+
+![Image 1](./public/images/image1.PNG)
+<br>
+
+
+![Image 1](./public/images/image2.PNG)
+<br>
+
+
+![Image 1](./public/images/mobileImage.PNG)
+<br>
