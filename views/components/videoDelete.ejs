@@ -7,7 +7,7 @@
             var elementId = $thisElement.attr('id');
             console.log(elementId);
             // $(".delete-notice").prepend(`<h1> was removed from current playlist</h1>`)
-            $.post("http://localhost:3000/remove", { video: elementId });
+            $.post("https://music-saver-3b51d79cbfa1.herokuapp.com/remove", { video: elementId });
             // refreshes the page to show user change in website
             window.location.replace("http://localhost:3000/playlist")
         });
@@ -17,7 +17,7 @@
     $(function () {
         $(document).on("click", ".empty-current", function (e) {
             // $(".delete-notice").prepend(`<h1> was removed from current playlist</h1>`)
-            $.get("http://localhost:3000/delete-playlist", function () {
+            $.get("https://music-saver-3b51d79cbfa1.herokuapp.com/delete-playlist", function () {
                 console.log("success, current playlist deleted");
                 // refreshes the page to show user change in website
                 location.reload();

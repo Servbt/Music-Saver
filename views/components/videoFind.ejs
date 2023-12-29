@@ -5,7 +5,7 @@
         $(document).on("click", ".video-link", function (e) {
             console.log("this was clicked on from playlist")
             var h2text = $(this).find("h2").text();
-            $.post("http://localhost:3000/video", { video: h2text },
+            $.post("https://music-saver-3b51d79cbfa1.herokuapp.com/video", { "video": h2text },
                 function (data, status) {
                     window.location.replace("http://localhost:3000/video")
                     console.log("Data: " + data + "\nStatus: " + status);

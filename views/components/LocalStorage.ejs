@@ -77,7 +77,7 @@
                 return console.log("can't copy an empty playlist")
             };
             console.log("local copy click");
-            $.post("http://localhost:3000/copy-local", { jsonObject: jsonObject },
+            $.post("https://music-saver-3b51d79cbfa1.herokuapp.com/copy-local", { jsonObject: jsonObject },
             function (data, status) {
                     // window.location.replace("http://localhost:3000/video")
                     console.log("Data: " + data + "\nStatus: " + status);

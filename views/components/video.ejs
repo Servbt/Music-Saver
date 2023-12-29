@@ -15,7 +15,7 @@
                 $(function () {
                 $(".add-video").on("click", function (e) {
             $(".video-add").append(`<h1 class="fs-1 playlist-head ps-2">Video Added to playlist</h1>`)
-                    $.post("http://localhost:3000/add-video", 
+                    $.post("https://music-saver-3b51d79cbfa1.herokuapp.com/add-video", 
                         { 
                         videoTitle: "<%=video.snippet.title%>",
                         videoID: "<%=video.id%>",
