@@ -9,7 +9,7 @@ The goal of this project is to allow users to search for youtube videos and save
 -   Express
 -   EJS
 -   Axios
-
+-   Heroku
 
 ### Pseudo-Code/Functionality
 
